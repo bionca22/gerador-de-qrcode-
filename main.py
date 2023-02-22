@@ -1,6 +1,6 @@
 import qrcode
 
-from functions import color_validator
+from model import color_validator
 
 message = input("que menssagem seu QRcode trará? ")
 
@@ -34,7 +34,10 @@ if background == "":
 else:
     background = color_validator(background)
 
-img = qrcode.make(data)
+qr =qrcode.QRcode(version = 1, box_sixe = 10, border = 5)
 
-img.save()
+qr.add_data(message)
 
+qr.make(fit =True)
+img = qr.make_image(fill_color = color_bars, back_color = background)
+img.save('C:/users/home/bianca/QRCode')
