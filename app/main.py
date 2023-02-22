@@ -12,6 +12,7 @@ print('''escolha uma cor para o seu QRcode!
 [VERMELHO]
 [VERDE]''')
 color_bars = input(">")
+
 color_bars = color_bars.lower
 if color_bars == "":
     print("seu QRcode terá uma cor padrão então!")
@@ -34,10 +35,10 @@ if background == "":
 else:
     background = color_validator(background)
 
-qr =qrcode.QRcode(version = 1, box_sixe = 10, border = 5)
+qr =qrcode.QRCode(version = 1, box_size = 10, border = 5)
 
 qr.add_data(message)
 
 qr.make(fit =True)
 img = qr.make_image(fill_color = color_bars, back_color = background)
-img.save('C:/users/home/bianca/QRCode')
+img.save('/home/bianca/QRCode')
