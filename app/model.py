@@ -6,7 +6,7 @@ def color_validator(color):
     try:
         for key in color_options.keys():
             if key == color:
+                print(color_options.values())
                 return color_options.values()
-            print(color_options.values())
     except ValueError:
         print("Oops! Cor inválida")
