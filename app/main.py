@@ -40,4 +40,4 @@ qr.add_data(message)
 
 qr.make(fit =True)
 img = qr.make_image(fill_color = color_bars, back_color = background)
-img.save('/user/home/bianca/QRCode')
+img.save(PATH_TO_FOLDER)
