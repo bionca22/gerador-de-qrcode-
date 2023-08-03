@@ -3,7 +3,7 @@
 <div align="center" >
 <p>Este projeto é capaz de criar QRcodes com cores personalizadas para background e barras, esse sistema usa: <br> <a href="https://docs.docker.com/">Docker</a> e Python.</p>
 <br>
-<img src="imag/pinkqrname.png" alt="grafic">
+<img src="imag/qrcode.png" alt="grafic">
 </div>
 <hr>
 
