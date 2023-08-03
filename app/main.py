@@ -1,43 +1,39 @@
 import qrcode
 
-from model import color_validator
+from model import get_user_option
+from config import PATH_TO_FOLDER
 
 message = input("que menssagem seu QRcode trará? ")
 
-print('''escolha uma cor para o seu QRcode!
-[BRANCO]
-[PRETO]
-[AZUL]
-[ROSA]
-[VERMELHO]
-[VERDE]''')
-color_bars = input(">\n")
-if color_bars == "":
-    print("seu QRcode terá uma cor padrão então!")
-    color_bars = "black"
-else:
-    color_bars = color_bars.lower
-    color_bars = color_validator(color_bars)
+color_bars = get_user_option(
+    """escolha uma cor para o seu QRcode!
+    [BRANCO]
+    [PRETO]
+    [AZUL]
+    [ROSA]
+    [VERMELHO]
+    [VERDE]"""
+)
 
-print('''escolha uma cor para o background do seu QRcode!
-[BRANCO]
-[PRETO]
-[AZUL]
-[ROSA]
-[VERMELHO]
-[VERDE]''')
-background = input("> \n")
-if background == "":
-    print("seu background terá uma cor padrão então!")
-    background = "white"
-else:
-    background = background.lower
-    background = color_validator(background)
+background = get_user_option(
+    """escolha uma cor para o background do seu QRcode!
+    [BRANCO]
+    [PRETO]
+    [AZUL]
+    [ROSA]
+    [VERMELHO]
+    [VERDE]"""
+)
 
-qr =qrcode.QRCode(version = 1, box_size = 10, border = 5)
 
+qrname = input("Com qual nome deseja salvar seu QR code? ")
+if not qrname:
+    print("Certo, vamos de nome padrão para seu QR code também.")
+    qrname = "qrcode"
+qrname = qrname.replace(" ", "")
+
+qr = qrcode.QRCode(version=1, box_size=10, border=5)
 qr.add_data(message)
-
-qr.make(fit =True)
-img = qr.make_image(fill_color = color_bars, back_color = background)
-img.save(PATH_TO_FOLDER)
+qr.make(fit=True)
+img = qr.make_image(fill_color=color_bars, back_color=background)
+img.save(PATH_TO_FOLDER + qrname)

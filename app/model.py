@@ -1,12 +1,28 @@
 color_options = {
-    "branco":"white", "preto":"black", "azul":"bluel", "rosa":"pink", "vermelho":"red", "verde":"green"
-    }
+    "branco": "white",
+    "preto": "black",
+    "azul": "blue",
+    "rosa": "pink",
+    "vermelho": "red",
+    "verde": "green",
+}
 
-def color_validator(color):
+
+def get_user_option(message):
+    while True:
+        user_input = input(f"{message}\n").lower()
+        if user_input in color_options:
+            return color_options[user_input]
+        else:
+            raise ValueError("Opção inválida. Tente novamente.")
+
+
+""" def color_validator(trigger, color):
     try:
-        for key in color_options.keys():
-            if key == color:
-                print(color_options.values())
-                return color_options.values()
+        if color == "":
+            print("seu QRcode terá uma cor padrão então!")
+            color_bars = default_color_bars
+        else:
+            color_bars = color_validator(color_bars)
     except ValueError:
-        print("Oops! Cor inválida")
+"""
